@@ -9,6 +9,7 @@ bin_PROGRAMS = \
 		nfc-emulate-uid \
 		nfc-mfsetuid \
 		nfc-poll \
+		nfc-poll-uid \
 		nfc-relay \
 		pn53x-diagnose \
 		pn53x-sam
@@ -26,6 +27,10 @@ check_PROGRAMS = \
 AM_CPPFLAGS = $(all_includes) $(LIBNFC_CFLAGS)
 
 AM_CFLAGS = -I$(top_srcdir)/libnfc -I$(top_srcdir)
+
+nfc_poll_uid_SOURCES = nfc-poll-uid.c
+nfc_poll_uid_LDADD = $(top_builddir)/libnfc/libnfc.la \
+		 $(top_builddir)/utils/libnfcutils.la
 
 nfc_poll_SOURCES = nfc-poll.c
 nfc_poll_LDADD = $(top_builddir)/libnfc/libnfc.la \
